@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPPO: Omni-Perception Policy Optimization</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1>Omni-Perception Policy Optimization for Multimodal Emotion Reasoning</h1>
+            <div class="authors">
+                Zhiyuan Han<sup>1,2,4</sup>, Beier Zhu<sup>1</sup>, Wenwen Tong<sup>2</sup>,
+                Pengyang Shao<sup>3</sup>, Peipei Song<sup>1</sup>, Xinyi Wang<sup>1</sup>,
+                Jiangnan Chen<sup>2</sup>, Lewei Lu<sup>2</sup>, Xun Yang<sup>1</sup>
+            </div>
+            <div class="affiliations">
+                <sup>1</sup>University of Science and Technology of China,
+                <sup>2</sup>SenseTime Research,
+                <sup>3</sup>National University of Singapore,
+                <sup>4</sup>Institute of Artificial Intelligence, Hefei Comprehensive National Science Center
+            </div>
+            <div class="conference">
+                International Conference on Machine Learning (ICML) 2026 <span class="oral">Accepted</span>
+            </div>
+            <div class="links">
+                <a href="https://arxiv.org/abs/2606.25325" class="btn">📄 Paper</a>
+                <a href="https://arxiv.org/pdf/2606.25325" class="btn">📕 PDF</a>
+                <a href="#" class="btn">💻 Code Coming Soon</a>
+                <a href="#" class="btn">📊 MEP-Bench Coming Soon</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Teaser -->
+    <section class="teaser">
+        <div class="container">
+            <img src="assets/figures/fig1-1.png" alt="OPPO Teaser" class="teaser-img">
+            <p class="caption">
+                <strong>Existing emotion Omni-MLLMs lack reliable perception of visual and acoustic cues.</strong>
+                <strong>(a)</strong> Underutilization: the model overlooks fine-grained visual cues and mainly relies on audio.
+                <strong>(b)</strong> Unfaithfulness: the model hallucinates visual evidence from an acoustic cue even when the video is masked.
+                <strong>(c)</strong> OPPO improves cue recall and masked-modality perception accuracy on MEP-Bench.
+            </p>
+            <p class="tip">
+                💡 <strong>Core message:</strong> Good emotion reasoning is not only about producing a fluent chain of thought.
+                The reasoning must use enough multimodal evidence and keep modality-specific statements grounded in the
+                modality that actually supports them.
+            </p>
+        </div>
+    </section>
+
+    <!-- Abstract -->
+    <section class="abstract">
+        <div class="container">
+            <h2>Abstract</h2>
+            <p>
+                Current emotion-oriented Omni-MLLMs still lack <em>reliable omni-modal perception</em>.
+                They often underutilize multimodal cues in their reasoning trajectories, and they can produce
+                unfaithful behavior by hallucinating modality-specific statements from other modalities.
+            </p>
+            <p>
+                We propose <strong>OPPO</strong> (Omni-Perception Policy Optimization), a reinforcement learning
+                framework that explicitly optimizes multimodal perception. OPPO introduces an
+                <strong>Omni-Perception Reward</strong> to encourage coverage of fine-grained visual, acoustic,
+                and emotion cues, and an <strong>Omni-Perception Loss</strong> to suppress cross-modal hallucination
+                through unimodal masking and token-level faithfulness regularization.
+            </p>
+            <p>
+                We further introduce <strong>MEP-Bench</strong>, a diagnostic benchmark that quantifies both
+                <em>utilization</em> and <em>faithfulness</em>. Experiments show that OPPO achieves state-of-the-art
+                performance on MER-UniBench and MME-Emotion, while substantially improving perception-oriented diagnostics.
+            </p>
+        </div>
+    </section>
+
+    <!-- Contributions -->
+    <section class="benchmark">
+        <div class="container">
+            <h2>Highlights</h2>
+            <ul class="analysis-points">
+                <li>
+                    <strong>Finding:</strong> Existing emotion Omni-MLLMs often miss human-perceived multimodal evidence
+                    and hallucinate masked-modality evidence under spurious audio-video correlations.
+                </li>
+                <li>
+                    <strong>Benchmark:</strong> MEP-Bench diagnoses reliable perception using evidence recall for
+                    utilization and masked-modality perception accuracy for faithfulness.
+                </li>
+                <li>
+                    <strong>Method:</strong> OPPO combines cue-coverage reward with targeted modality-sensitive loss,
+                    aligning generated reasoning with visual, acoustic, and emotion evidence.
+                </li>
+                <li>
+                    <strong>Performance:</strong> OPPO reaches 81.05 mean score on MER-UniBench and improves MEP-Bench
+                    recall from 58.00 to 70.44 over the strong baseline.
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- MEP-Bench -->
+    <section class="understanding">
+        <div class="container">
+            <h2>MEP-Bench Diagnostic Benchmark</h2>
+            <p class="caption">
+                MEP-Bench is designed to evaluate whether an emotion Omni-MLLM can perceive multimodal evidence reliably,
+                rather than merely generating a plausible explanation. It is derived from OV-MERD and focuses on cue-rich
+                instances where visual and acoustic evidence can be explicitly checked.
+            </p>
+
+            <p class="tip">
+                💡 <strong>Benchmark scale:</strong> MEP-Bench contains 300 cue-rich samples and 500 probe questions per
+                modality for masked visual and masked audio evaluation.
+            </p>
+        </div>
+    </section>
+
+    <!-- Architecture -->
+    <section class="architecture">
+        <div class="container">
+            <h2>Framework Architecture</h2>
+            <img src="assets/figures/fig2-1.png" alt="OPPO Framework" class="arch-img">
+            <p class="caption">
+                <strong>Overview of OPPO:</strong>
+                <strong>(Top)</strong> Fine-grained evidence is organized into video cues, audio cues, and emotion cues.
+                <strong>(Middle)</strong> The Omni-Perception Reward builds an Evidence-Routing Matrix between generated
+                clauses and ground-truth cues, encouraging the model to cover diverse multimodal evidence.
+                <strong>(Bottom)</strong> The Omni-Perception Loss constructs unimodal masked inputs and applies KL
+                supervision to modality-specific evidence tokens, enforcing faithfulness.
+            </p>
+
+            <h3>Training Pipeline</h3>
+            <ul class="analysis-points">
+                <li>
+                    <strong>Structured output:</strong> the model generates a reasoning chain inside
+                    <code>&lt;think&gt;...&lt;/think&gt;</code>, followed by a final prediction inside
+                    <code>&lt;answer&gt;...&lt;/answer&gt;</code>.
+                </li>
+                <li>
+                    <strong>Cold-start SFT:</strong> OPPO uses 5k samples from MER-Caption+ for supervised fine-tuning.
+                </li>
+                <li>
+                    <strong>RL stage:</strong> GRPO-style optimization combines task reward, format reward, Omni-Perception Reward,
+                    and Omni-Perception Loss.
+                </li>
+                <li>
+                    <strong>Default setting:</strong> alpha = 0.5, beta = 8e-3, mask ratio rho = 0.7, and similarity threshold delta = 0.5.
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Method Details -->
+    <section class="benchmark">
+        <div class="container">
+            <h2>Method Details</h2>
+
+            <h3>Omni-Perception Reward</h3>
+            <p class="caption">
+                OPPO decomposes ground-truth reasoning into atomic evidence cues and groups them into
+                visual cues, acoustic cues, and emotion cues. The generated reasoning chain is segmented into clauses.
+                Each cue is matched to its best supporting clause by embedding similarity. The reward increases when
+                generated clauses cover more ground-truth evidence across all cue types.
+            </p>
+
+            <ul class="analysis-points">
+                <li><strong>Video cues:</strong> facial expression, gaze, smile, posture, and body movement.</li>
+                <li><strong>Audio cues:</strong> tone, rhythm, volume, pause, tremble, and pace.</li>
+                <li><strong>Emotion cues:</strong> inferential statements that connect observed evidence to the final emotion.</li>
+            </ul>
+
+            <h3>Omni-Perception Loss</h3>
+            <p class="caption">
+                To test whether a visual or acoustic statement really depends on its source modality, OPPO compares
+                the model distribution under the full input and under a counterfactual input where one modality is masked.
+                Unlike generic perception losses such as PAPO, OPPO applies the KL term only to evidence tokens that
+                describe the masked modality. This makes the constraint targeted and reduces global distribution drift.
+            </p>
+
+            <p class="tip">
+                💡 <strong>Why reward and loss work together:</strong> the reward asks the model to recover useful cues,
+                while the loss ensures that modality-specific cue tokens truly depend on their corresponding modality.
+            </p>
+        </div>
+    </section>
+
+    <!-- Understanding Section -->
+    <section class="understanding">
+        <div class="container">
+            <h2>Understanding the Optimization Synergy</h2>
+            <p class="caption">
+                The appendix provides an information-theoretic interpretation of why the reward and loss are coupled.
+                The Omni-Perception Loss expands the faithful information channel between modality input and evidence tokens.
+                The Omni-Perception Reward then uses this channel to recover task-relevant evidence cues.
+            </p>
+            <ul class="analysis-points">
+                <li>
+                    <strong>Loss as dense supervision:</strong> modality-specific KL supervision pushes the model toward
+                    modality-sensitive reasoning regions before sparse reward optimization becomes effective.
+                </li>
+                <li>
+                    <strong>Reward as semantic steering:</strong> cue coverage turns the expanded information channel into
+                    discriminative evidence for emotion understanding.
+                </li>
+                <li>
+                    <strong>Empirical validation:</strong> as beta increases to 8e-3, faithfulness improves and the final
+                    Omni-Perception Reward rises substantially.
+                </li>
+            </ul>
+            <img src="assets/figures/fig3-1.png" alt="OPPO Ablation" class="result-img-small">
+            <p class="caption">
+                <strong>Synergistic effect of Omni-Perception Loss on Reward:</strong> a sufficient beta value raises
+                the converged reward, suggesting that faithful perception unlocks stronger cue utilization.
+            </p>
+        </div>
+    </section>
+
+    <!-- Results -->
+    <section class="results">
+        <div class="container">
+            <h2>Experimental Results</h2>
+
+            <h3>Diagnostic Results on MEP-Bench</h3>
+            <img src="assets/tables/table1_mep_bench.png" alt="Diagnostic analysis on MEP-Bench" class="result-img-small">
+            <p class="caption">
+                OPPO improves recall by 12.44 over the strong baseline and increases masked perception accuracy by
+                17.20 on video probes and 17.60 on audio probes.
+            </p>
+
+            <h3>Main Results on MER-UniBench</h3>
+            <img src="assets/tables/table2_mer_unibench.png" alt="Main results on MER-UniBench" class="result-img">
+
+            <h3>Main Results on MME-Emotion</h3>
+            <img src="assets/tables/table3_mme_emotion.png" alt="Main results on MME-Emotion" class="result-img">
+        </div>
+    </section>
+
+    <!-- Ablation -->
+    <section class="benchmark">
+        <div class="container">
+            <h2>Ablation Studies</h2>
+
+            <h3>Component Analysis</h3>
+            <img src="assets/tables/table4_ablation_main.png" alt="Ablation study on MER-UniBench and MEP-Bench" class="result-img">
+
+            <h3>Hyperparameter Findings</h3>
+            <ul class="analysis-points">
+                <li><strong>Reward weight alpha:</strong> alpha = 0.5 gives the best stable balance; alpha >= 0.6 can cause format collapse late in training.</li>
+                <li><strong>Loss weight beta:</strong> beta = 8e-3 yields the best overall performance, raising recall to 70.44 and Acc@V to 76.40.</li>
+                <li><strong>Mask ratio rho:</strong> rho = 0.7 provides the best balance between task performance, utilization, and faithfulness.</li>
+                <li><strong>Similarity threshold delta:</strong> delta = 0.5 achieves the best trade-off; lower thresholds behave more like modality-agnostic constraints.</li>
+            </ul>
+
+            <h3>Embedding Reward vs. LLM-as-a-Judge</h3>
+            <p class="caption">
+                The embedding-based reward is deterministic, continuous, tightly coupled with evidence routing, and
+                more efficient than judge-based scalar rewards.
+            </p>
+        </div>
+    </section>
+
+    <!-- Qualitative Comparison -->
+    <section class="results">
+        <div class="container">
+            <h2>Qualitative Comparison</h2>
+            <img src="assets/tables/table10_utilization1.png" alt="Utilization qualitative example" class="result-img-small">
+            <img src="assets/tables/table14_video_faith1.png" alt="Video faithfulness qualitative example" class="result-img-small">
+            <p class="caption">
+                <strong>Qualitative Results:</strong> OPPO captures richer multimodal evidence in its reasoning process
+                and avoids hallucinating modality-specific cues under masking, while baseline methods often overlook
+                key visual or acoustic evidence and produce unfaithful explanations.
+            </p>
+        </div>
+    </section>
+
+    <!-- Citation -->
+    <section class="citation">
+        <div class="container">
+            <h2>Citation</h2>
+            <pre><code>@article{han2026oppo,
+  title={Omni-Perception Policy Optimization for Multimodal Emotion Reasoning},
+  author={Han, Zhiyuan and Zhu, Beier and Tong, Wenwen and Shao, Pengyang and Song, Peipei and Wang, Xinyi and Chen, Jiangnan and Lu, Lewei and Yang, Xun},
+  journal={arXiv preprint arXiv:2606.25325},
+  year={2026}
+}</code></pre>
+        </div>
+    </section>
+
+    <!-- Acknowledgements -->
+    <section class="acknowledgements">
+        <div class="container">
+            <h2>Acknowledgements</h2>
+            <p>
+                We thank the following projects and benchmarks for their excellent contributions:
+                <a href="https://arxiv.org/abs/2508.01181">MoSEAR</a>,
+                <a href="https://arxiv.org/abs/2406.11161">Emotion-LLaMA</a>,
+                <a href="https://arxiv.org/abs/2505.14566">AffectGPT-R1</a>,
+                and <a href="https://arxiv.org/abs/2507.11430">HumanOmni-V2</a>.
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Zhiyuan Han. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
