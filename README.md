@@ -35,6 +35,7 @@ After GitHub finishes deployment, the site will be available at:
 - `assets/tables/table4_ablation_main.png`
 - `assets/tables/table10_utilization1.png`
 - `assets/tables/table14_video_faith1.png`
+  
 
 ## Before final publication
 
