@@ -184,45 +184,6 @@ a:hover {
   color: #2f2f2f;
 }
 
-.method-overview-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.method-note {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 0.8rem;
-  align-items: start;
-  padding: 1rem 1.1rem;
-  border: 1px solid #e7e7e7;
-  border-radius: 8px;
-  background: #f5f5f5;
-  color: #333;
-  font-size: 0.98rem;
-}
-
-.method-note p {
-  margin: 0;
-}
-
-.method-index {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.65rem;
-  height: 1.65rem;
-  border-radius: 999px;
-  background: #363636;
-  color: #fff;
-  font-family: 'Google Sans', 'Noto Sans', Arial, sans-serif;
-  font-size: 0.9rem;
-  font-weight: 600;
-  line-height: 1;
-}
-
 .benchmark-figure {
   display: block;
   width: min(100%, 760px);
@@ -338,13 +299,11 @@ code {
     font-size: 1.55rem;
   }
 
-  .method-overview-grid,
   .qualitative-grid {
     grid-template-columns: 1fr;
   }
 
-  .has-text-justified,
-  .method-note {
+  .has-text-justified {
     text-align: left;
   }
 }

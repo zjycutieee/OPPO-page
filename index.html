@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" href="fig1-1.png">
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="style.css?v=5">
+  <link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
   <section class="hero publication-header">
@@ -88,32 +88,14 @@
         <h2 class="title is-3">Method Overview</h2>
         <img src="fig2-1.png" alt="Overview of the OPPO framework" class="main-figure">
         <p class="content has-text-justified figure-caption">
-          <b>Overview of OPPO.</b> Given multimodal emotion data, OPPO first decomposes the ground-truth reasoning into
-          fine-grained video cues, audio cues, and emotion cues. The model's generated thinking trajectory is then split
-          into clauses and aligned with these cues through an evidence-routing matrix, so the optimization can explicitly
-          reward cue coverage rather than only final label correctness.
-        </p>
-        <div class="method-overview-grid">
-          <div class="method-note">
-            <span class="method-index">1</span>
-            <p>
-              <b>Omni-Perception Reward</b> encourages the reasoning chain to recover human-annotated evidence across
-              visual behavior, acoustic patterns, and emotion-level inferences.
-            </p>
-          </div>
-          <div class="method-note">
-            <span class="method-index">2</span>
-            <p>
-              <b>Omni-Perception Loss</b> constructs unimodally masked counterfactual inputs and applies KL supervision
-              only to modality-specific evidence tokens, suppressing cross-modal hallucination without globally disturbing
-              the full reasoning distribution.
-            </p>
-          </div>
-        </div>
-        <p class="content has-text-justified figure-caption">
-          <b>Intuition.</b> The reward makes the model use enough evidence; the loss makes sure that the evidence it
-          mentions is actually grounded in the modality that supports it. Together, they optimize the two diagnostic
-          principles behind reliable multimodal emotion reasoning: utilization and faithfulness.
+          <b>Overview of OPPO.</b> As shown in the upper branch, OPPO first builds a cue set from the annotated
+          video, audio, and emotion evidence, then splits the model's generated thinking process into clauses and aligns
+          them with these cues through an evidence-routing matrix. This alignment supports the Omni-Perception Reward,
+          which scores not only final accuracy and response format, but also whether the reasoning recovers sufficient
+          multimodal evidence. The lower branch illustrates the Omni-Perception Loss: OPPO masks video or audio inputs,
+          compares token-level distributions for modality-specific evidence, and penalizes visual or acoustic claims that
+          cannot be grounded in the corresponding modality. In this way, the reward improves evidence utilization while
+          the loss improves perception faithfulness.
         </p>
       </div>
     </div>
