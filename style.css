@@ -120,6 +120,7 @@ a:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.45rem;
   min-height: 2.5rem;
   padding: 0.55rem 1.15rem;
   border: 1px solid transparent;
@@ -129,6 +130,13 @@ a:hover {
   font-weight: 500;
   line-height: 1;
   cursor: pointer;
+}
+
+.button-icon {
+  display: inline-flex;
+  align-items: center;
+  font-size: 1.15rem;
+  line-height: 1;
 }
 
 .button.is-dark {
@@ -176,47 +184,52 @@ a:hover {
   color: #2f2f2f;
 }
 
-.method-grid,
-.benchmark-grid {
+.method-strip {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.25rem;
-  margin-top: 1.5rem;
+  gap: 1rem;
+  margin-top: 0.25rem;
 }
 
-.method-card,
-.benchmark-card {
-  border: 1px solid #e5e5e5;
-  border-radius: 8px;
-  padding: 1.35rem 1.4rem;
-  background: #fff;
-}
-
-.method-card h3,
-.benchmark-card h3 {
-  margin: 0 0 0.7rem;
-  color: #111;
-  font-family: 'Google Sans', 'Noto Sans', Arial, sans-serif;
-  font-size: 1.18rem;
-  font-weight: 600;
-}
-
-.method-card p,
-.benchmark-card p {
-  margin: 0 0 0.85rem;
+.method-strip div {
+  padding: 1rem 1.1rem;
+  border-left: 4px solid #363636;
+  background: #f5f5f5;
   color: #333;
-  text-align: justify;
+  font-size: 0.98rem;
 }
 
-.method-card p:last-child,
-.benchmark-card p:last-child {
-  margin-bottom: 0;
+.benchmark-figure {
+  display: block;
+  width: min(100%, 760px);
+  height: auto;
+  margin: 0.25rem auto 1rem;
+}
+
+.benchmark-pills {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin: 0.75rem auto 1rem;
+}
+
+.benchmark-pills span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0.32rem 0.8rem;
+  border-radius: 999px;
+  background: #f1f1f1;
+  color: #333;
+  font-family: 'Google Sans', 'Noto Sans', Arial, sans-serif;
+  font-size: 0.92rem;
 }
 
 .qualitative-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.25rem;
+  grid-template-columns: 1fr;
+  gap: 1.6rem;
   align-items: start;
   margin-top: 0.4rem;
 }
@@ -229,6 +242,7 @@ a:hover {
   display: block;
   width: 100%;
   height: auto;
+  margin: 0 auto;
 }
 
 pre {
@@ -300,15 +314,13 @@ code {
     font-size: 1.55rem;
   }
 
-  .method-grid,
-  .benchmark-grid,
+  .method-strip,
   .qualitative-grid {
     grid-template-columns: 1fr;
   }
 
   .has-text-justified,
-  .method-card p,
-  .benchmark-card p {
+  .method-strip div {
     text-align: left;
   }
 }

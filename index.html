@@ -6,7 +6,8 @@
   <title>OPPO: Omni-Perception Policy Optimization</title>
   <link rel="icon" type="image/png" href="fig1-1.png">
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
   <section class="hero publication-header">
@@ -36,8 +37,14 @@
         <div class="publication-venue">International Conference on Machine Learning (ICML) 2026</div>
 
         <div class="publication-links">
-          <a href="https://arxiv.org/abs/2606.25325" class="button is-dark is-rounded">Paper</a>
-          <a href="https://arxiv.org/pdf/2606.25325" class="button is-dark is-rounded">PDF</a>
+          <a href="https://arxiv.org/abs/2606.25325" class="button is-dark is-rounded">
+            <span class="button-icon"><i class="ai ai-arxiv" aria-hidden="true"></i></span>
+            <span>Paper</span>
+          </a>
+          <a href="https://arxiv.org/pdf/2606.25325" class="button is-dark is-rounded">
+            <span class="button-icon"><i class="ai ai-arxiv" aria-hidden="true"></i></span>
+            <span>PDF</span>
+          </a>
           <a href="#" class="button is-dark is-rounded">Code Coming Soon</a>
         </div>
       </div>
@@ -62,21 +69,14 @@
       <div class="content has-text-justified">
         <h2 class="title is-3 has-text-centered">Abstract</h2>
         <p>
-          Multimodal emotion reasoning asks an Omni-MLLM to identify emotions and explain them with visual, acoustic,
-          and linguistic evidence. In practice, a fluent explanation is not always a reliable one: a model can overlook
-          important cues, or describe facial and vocal evidence that is not actually supported by the corresponding modality.
-          This work studies that gap from the perspective of omni-modal perception.
-        </p>
-        <p>
-          OPPO introduces a reinforcement learning framework that makes perception an explicit optimization target.
-          The reward side encourages the reasoning trajectory to recover fine-grained evidence cues, while the loss side
-          checks whether modality-specific tokens remain grounded when visual or audio inputs are masked. Together, these
-          two components guide the model toward richer cue usage and fewer cross-modal hallucinations.
-        </p>
-        <p>
-          To diagnose this behavior, we build MEP-Bench, a benchmark focused on cue utilization and faithfulness under
-          unimodal masking. Experiments on MER-UniBench show that improving grounded perception also improves downstream
-          emotion reasoning performance.
+          Multimodal emotion reasoning requires models to predict emotions and justify them with visual, acoustic, and
+          linguistic evidence. We find that current emotion-oriented Omni-MLLMs often produce plausible but unreliable
+          reasoning: they may overlook important multimodal cues or hallucinate modality-specific evidence from another
+          modality. OPPO addresses this problem by optimizing perception directly. It combines an Omni-Perception Reward
+          that encourages generated reasoning to recover fine-grained evidence cues with an Omni-Perception Loss that
+          tests whether visual and acoustic statements remain grounded under unimodal masking. We further introduce
+          MEP-Bench to diagnose utilization and faithfulness, and show that better perception leads to stronger
+          performance on MER-UniBench.
         </p>
       </div>
     </div>
@@ -101,37 +101,20 @@
     <div class="hero-body">
       <div class="container is-max-desktop">
         <h2 class="title is-3">Method</h2>
-        <div class="method-grid">
-          <article class="method-card">
-            <h3>Omni-Perception Reward</h3>
-            <p>
-              The reward measures how completely the model recovers human-recognizable evidence in its reasoning.
-              Ground-truth explanations are decomposed into atomic cues, and the generated chain of thought is split
-              into short clauses. OPPO embeds both sides and builds an evidence-routing matrix that links each cue to
-              the clause that best supports it.
-            </p>
-            <p>
-              This makes reward feedback fine-grained rather than label-only. Visual behaviors such as gaze and posture,
-              acoustic patterns such as tone and rhythm, and emotion-level inferences are all counted separately, so the
-              model is encouraged to use diverse multimodal evidence before producing the final emotion prediction.
-            </p>
-          </article>
-
-          <article class="method-card">
-            <h3>Omni-Perception Loss</h3>
-            <p>
-              The loss focuses on whether a modality-specific statement is faithful to its source. OPPO compares the
-              model distribution under the full input with the distribution under a counterfactual input where one
-              modality is masked. If a visual cue is mentioned when the video is absent, or an audio cue survives without
-              audio, the model is pushed away from that hallucinated evidence.
-            </p>
-            <p>
-              Unlike a global masking penalty, the KL term is applied only to tokens that describe the masked modality.
-              This targeted design preserves general reasoning fluency while directly penalizing cross-modal hallucination
-              on the evidence tokens that matter most for faithful emotion reasoning.
-            </p>
-          </article>
+        <div class="method-strip">
+          <div>
+            <b>Omni-Perception Reward.</b>
+            Matches generated reasoning clauses to video, audio, and emotion cues, rewarding broad evidence coverage.
+          </div>
+          <div>
+            <b>Omni-Perception Loss.</b>
+            Masks one modality and applies targeted KL supervision to modality-specific evidence tokens.
+          </div>
         </div>
+        <p class="content has-text-justified figure-caption">
+          <b>Reward and loss are complementary.</b> The reward asks the model to use enough multimodal evidence, while
+          the loss checks whether each modality-specific statement truly depends on the corresponding input.
+        </p>
       </div>
     </div>
   </section>
@@ -140,52 +123,17 @@
     <div class="hero-body">
       <div class="container is-max-desktop">
         <h2 class="title is-3">Benchmark</h2>
-        <div class="content has-text-justified">
-          <p>
-            <b>MEP-Bench</b> is designed as a diagnostic benchmark for reliable perception in multimodal emotion
-            reasoning. Instead of only checking whether the final emotion label is correct, it asks whether the reasoning
-            process uses the right evidence and whether modality-specific claims remain grounded in the modality that
-            supports them.
-          </p>
+        <img src="table1_mep_bench.png" alt="Diagnostic results on MEP-Bench" class="benchmark-figure">
+        <div class="benchmark-pills" aria-label="MEP-Bench summary">
+          <span>300 cue-rich samples</span>
+          <span>500 probes per modality</span>
+          <span>Recall, Acc@V, Acc@A</span>
         </div>
-
-        <div class="benchmark-grid">
-          <article class="benchmark-card">
-            <h3>Source and Scale</h3>
-            <p>
-              MEP-Bench is derived from OV-MERD by selecting cue-rich samples where visual and acoustic evidence can be
-              explicitly inspected. The benchmark contains 300 samples and constructs 500 probe questions for each masked
-              modality evaluation.
-            </p>
-          </article>
-
-          <article class="benchmark-card">
-            <h3>Utilization</h3>
-            <p>
-              Utilization measures whether a model covers human-annotated multimodal cues in its generated reasoning.
-              Human annotations and model thoughts are decomposed into atomic cues, embedded, and matched by cosine
-              similarity. A cue is counted as recalled when its best generated counterpart passes the similarity threshold.
-            </p>
-          </article>
-
-          <article class="benchmark-card">
-            <h3>Faithfulness</h3>
-            <p>
-              Faithfulness is tested with POPE-style unimodal masking. For example, after masking video, the benchmark
-              asks whether the video shows a specific expression. A correct refusal indicates that the model does not
-              hallucinate visual evidence from audio or language priors.
-            </p>
-          </article>
-
-          <article class="benchmark-card">
-            <h3>Diagnostic Value</h3>
-            <p>
-              The two axes expose different failure modes. A model can mention too few cues even when its answer is
-              plausible, or it can mention many cues while some are not grounded. MEP-Bench separates these cases through
-              evidence recall, Acc@V, and Acc@A.
-            </p>
-          </article>
-        </div>
+        <p class="content has-text-justified figure-caption">
+          <b>MEP-Bench diagnostic benchmark.</b> Derived from OV-MERD, MEP-Bench evaluates whether reasoning uses
+          human-annotated multimodal cues and whether visual or acoustic claims remain faithful under unimodal masking.
+          It separates underutilization from cross-modal hallucination through evidence recall and masked perception accuracy.
+        </p>
       </div>
     </div>
   </section>
