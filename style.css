@@ -213,6 +213,24 @@ a:hover {
   margin-bottom: 0;
 }
 
+.qualitative-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  align-items: start;
+  margin-top: 0.4rem;
+}
+
+.qualitative-figure {
+  margin: 0;
+}
+
+.qualitative-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 pre {
   overflow-x: auto;
   margin: 0;
@@ -283,7 +301,8 @@ code {
   }
 
   .method-grid,
-  .benchmark-grid {
+  .benchmark-grid,
+  .qualitative-grid {
     grid-template-columns: 1fr;
   }
 
