@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <link rel="stylesheet" href="style.css?v=9">
+  <link rel="stylesheet" href="style.css?v=10">
 </head>
 <body>
 
@@ -100,31 +100,33 @@
   <div class="container">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            Multimodal emotion reasoning requires models to recognize emotions and explain them with evidence from
-            visual behavior, acoustic patterns, and language context. Although recent Omni-MLLMs have shown promising
-            reasoning ability, their explanations are not always perceptually reliable: a model may ignore useful
-            fine-grained cues, or mention visual and acoustic evidence that is not actually supported by the input.
-          </p>
-          <p>
-            We identify two key perception problems behind this failure: insufficient utilization of multimodal
-            evidence and unfaithful cross-modal hallucination. To address them, we propose
-            <strong>Omni-Perception Policy Optimization (OPPO)</strong>, a perception-aware optimization framework for
-            emotion Omni-MLLMs.
-          </p>
-          <p>
-            OPPO introduces an <strong>Omni-Perception Reward</strong> to encourage generated reasoning to recover
-            annotated video, audio, and emotion cues, and an <strong>Omni-Perception Loss</strong> to test whether
-            modality-specific claims remain valid when video or audio evidence is masked. These two objectives jointly
-            push the model to use enough evidence while keeping its explanations grounded in the correct modality.
-          </p>
-          <p>
-            We further build <strong>MEP-Bench</strong>, a diagnostic benchmark for measuring evidence utilization and
-            perception faithfulness. Experiments on MEP-Bench and MER-UniBench show that improving perceptual grounding
-            leads to more reliable reasoning and stronger multimodal emotion recognition performance.
-          </p>
+        <div class="abstract-panel">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Multimodal emotion reasoning requires models to recognize emotions and explain them with evidence from
+              visual behavior, acoustic patterns, and language context. Although recent Omni-MLLMs have shown promising
+              reasoning ability, their explanations are not always perceptually reliable: a model may ignore useful
+              fine-grained cues, or mention visual and acoustic evidence that is not actually supported by the input.
+            </p>
+            <p>
+              We identify two key perception problems behind this failure: insufficient utilization of multimodal
+              evidence and unfaithful cross-modal hallucination. To address them, we propose
+              <strong>Omni-Perception Policy Optimization (OPPO)</strong>, a perception-aware optimization framework for
+              emotion Omni-MLLMs.
+            </p>
+            <p>
+              OPPO introduces an <strong>Omni-Perception Reward</strong> to encourage generated reasoning to recover
+              annotated video, audio, and emotion cues, and an <strong>Omni-Perception Loss</strong> to test whether
+              modality-specific claims remain valid when video or audio evidence is masked. These two objectives jointly
+              push the model to use enough evidence while keeping its explanations grounded in the correct modality.
+            </p>
+            <p>
+              We further build <strong>MEP-Bench</strong>, a diagnostic benchmark for measuring evidence utilization and
+              perception faithfulness. Experiments on MEP-Bench and MER-UniBench show that improving perceptual grounding
+              leads to more reliable reasoning and stronger multimodal emotion recognition performance.
+            </p>
+          </div>
         </div>
       </div>
     </div>

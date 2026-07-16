@@ -234,6 +234,18 @@ a:hover {
   margin: 0 0 1rem;
 }
 
+.abstract-panel {
+  padding: 2.4rem 2.7rem 2.2rem;
+  border: 1px solid #ececec;
+  border-radius: 8px;
+  background: #f7f7f8;
+  box-shadow: 0 16px 38px rgba(32, 33, 36, 0.12);
+}
+
+.abstract-panel .content p:last-child {
+  margin-bottom: 0;
+}
+
 .content strong,
 .content b {
   font-weight: 700;
@@ -358,6 +370,10 @@ code {
 
   .button {
     min-width: 8rem;
+  }
+
+  .abstract-panel {
+    padding: 1.55rem 1.25rem 1.4rem;
   }
 
   .has-text-justified {
