@@ -1,6 +1,15 @@
+:root {
+  --body-color: #111111;
+  --title-color: #202124;
+  --muted-color: #555555;
+  --link-color: hsl(204, 86%, 53%);
+  --section-title-size: 1.9rem;
+  --subsection-title-size: 1.35rem;
+}
+
 body {
   margin: 0;
-  color: #111;
+  color: var(--body-color);
   background: #fff;
   font-family: 'Noto Sans', Arial, sans-serif;
   font-size: 16px;
@@ -8,7 +17,7 @@ body {
 }
 
 a {
-  color: hsl(204, 86%, 53%);
+  color: var(--link-color);
   text-decoration: none;
 }
 
@@ -17,12 +26,12 @@ a:hover {
 }
 
 .container {
-  width: min(100% - 40px, 1120px);
+  width: min(100% - 40px, 1240px);
   margin: 0 auto;
 }
 
 .is-max-desktop {
-  max-width: 960px;
+  max-width: 1080px;
 }
 
 .columns {
@@ -36,8 +45,8 @@ a:hover {
 }
 
 .column.is-four-fifths {
-  flex: 0 1 80%;
-  max-width: 960px;
+  flex: 0 1 92%;
+  max-width: 1100px;
 }
 
 .column.is-8 {
@@ -67,6 +76,7 @@ a:hover {
 
 .title {
   margin: 0 0 1.25rem;
+  color: var(--title-color);
   font-family: 'Google Sans', 'Noto Sans', Arial, sans-serif;
   font-weight: 600;
   line-height: 1.18;
@@ -77,12 +87,12 @@ a:hover {
 }
 
 .title.is-3 {
-  font-size: 1.9rem;
+  font-size: var(--section-title-size);
 }
 
 .title.is-4 {
   margin-bottom: 1rem;
-  font-size: 1.35rem;
+  font-size: var(--subsection-title-size);
 }
 
 .subtitle {
@@ -106,13 +116,13 @@ a:hover {
 
 .publication-authors {
   margin-top: 0.35rem;
-  color: #111;
+  color: var(--body-color);
   font-family: 'Google Sans', 'Noto Sans', Arial, sans-serif;
   line-height: 1.7;
 }
 
 .publication-authors a {
-  color: hsl(204, 86%, 53%) !important;
+  color: var(--link-color) !important;
 }
 
 .publication-authors a:hover {
@@ -120,7 +130,7 @@ a:hover {
 }
 
 .publication-affiliations {
-  color: #555;
+  color: var(--muted-color);
   font-size: 0.98rem;
 }
 
@@ -132,7 +142,7 @@ a:hover {
 .publication-venue {
   width: fit-content;
   margin: 1.25rem auto 1.35rem;
-  color: #555;
+  color: var(--muted-color);
   font-family: 'Google Sans', 'Noto Sans', Arial, sans-serif;
   font-weight: 700;
 }
@@ -217,6 +227,7 @@ a:hover {
 
 .content {
   font-size: 1.02rem;
+  line-height: 1.7;
 }
 
 .content p {
@@ -304,7 +315,7 @@ code {
 
 @media (max-width: 768px) {
   .container {
-    width: min(100% - 28px, 1120px);
+    width: min(100% - 28px, 1240px);
   }
 
   .columns {
