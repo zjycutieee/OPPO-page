@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <link rel="stylesheet" href="style.css?v=7">
+  <link rel="stylesheet" href="style.css?v=8">
 </head>
 <body>
 
@@ -79,7 +79,11 @@
             </div>
           </div>
 
- 
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="hero teaser">
   <div class="container is-max-desktop">
@@ -99,16 +103,27 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Multimodal emotion reasoning asks a model to infer emotions while grounding its explanation in visual,
-            acoustic, and linguistic evidence. Existing emotion-oriented Omni-MLLMs can give plausible reasoning, but
-            they often miss fine-grained cues or borrow evidence from the wrong modality. OPPO addresses these failures
-            by optimizing perception itself rather than relying only on final-answer supervision.
+            Multimodal emotion reasoning requires models to recognize emotions and explain them with evidence from
+            visual behavior, acoustic patterns, and language context. Although recent Omni-MLLMs have shown promising
+            reasoning ability, their explanations are not always perceptually reliable: a model may ignore useful
+            fine-grained cues, or mention visual and acoustic evidence that is not actually supported by the input.
           </p>
           <p>
-            OPPO combines an Omni-Perception Reward, which encourages generated reasoning to cover annotated multimodal
-            evidence, with an Omni-Perception Loss, which checks whether visual and acoustic claims remain grounded
-            under unimodal masking. We also introduce MEP-Bench to separately diagnose evidence utilization and
-            modality faithfulness, and show that stronger perception leads to better performance on MER-UniBench.
+            We identify two key perception problems behind this failure: insufficient utilization of multimodal
+            evidence and unfaithful cross-modal hallucination. To address them, we propose
+            <strong>Omni-Perception Policy Optimization (OPPO)</strong>, a perception-aware optimization framework for
+            emotion Omni-MLLMs.
+          </p>
+          <p>
+            OPPO introduces an <strong>Omni-Perception Reward</strong> to encourage generated reasoning to recover
+            annotated video, audio, and emotion cues, and an <strong>Omni-Perception Loss</strong> to test whether
+            modality-specific claims remain valid when video or audio evidence is masked. These two objectives jointly
+            push the model to use enough evidence while keeping its explanations grounded in the correct modality.
+          </p>
+          <p>
+            We further build <strong>MEP-Bench</strong>, a diagnostic benchmark for measuring evidence utilization and
+            perception faithfulness. Experiments on MEP-Bench and MER-UniBench show that improving perceptual grounding
+            leads to more reliable reasoning and stronger multimodal emotion recognition performance.
           </p>
         </div>
       </div>
@@ -119,11 +134,16 @@
         <h2 class="title is-3">Method Overview</h2>
         <div class="content has-text-justified">
           <p>
-            OPPO consists of two tightly coupled objectives. The upper branch in the figure constructs a cue set from
-            annotated video, audio, and emotion evidence, aligns generated reasoning clauses with those cues through an
-            evidence-routing matrix, and turns the alignment into the Omni-Perception Reward. The lower branch masks
-            one modality at a time and applies the Omni-Perception Loss to modality-specific evidence tokens, reducing
-            visual or acoustic hallucination while preserving the full reasoning trajectory.
+            <strong>Omni-Perception Reward.</strong> The upper branch constructs a cue set from annotated video, audio,
+            and emotion evidence. OPPO then splits the generated thinking process into clauses and aligns them with
+            these cues through an evidence-routing matrix. This alignment allows the reward to score whether the model
+            recovers sufficient multimodal evidence, instead of only checking final answer correctness or output format.
+          </p>
+          <p>
+            <strong>Omni-Perception Loss.</strong> The lower branch masks one modality at a time and compares the
+            token-level distributions of modality-specific evidence. If a visual or acoustic claim remains confident
+            when the supporting modality is removed, OPPO penalizes it through targeted KL supervision. This reduces
+            cross-modal hallucination while preserving the broader reasoning trajectory.
           </p>
           <img src="fig2-1.png" alt="Method overview of the OPPO framework" class="section-image method-image">
         </div>

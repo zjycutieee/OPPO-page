@@ -194,24 +194,6 @@ a:hover {
   line-height: 1;
 }
 
-.publication-news {
-  max-width: 960px;
-  margin: 1.5rem auto 0;
-  padding: 1rem 1.25rem;
-  border-left: 4px solid hsl(204, 86%, 53%);
-  background: #f7f7f9;
-  text-align: center;
-}
-
-.news-label {
-  display: inline;
-  margin-right: 0.35rem;
-  color: #363636;
-  font-family: 'Google Sans', 'Noto Sans', Arial, sans-serif;
-  font-weight: 700;
-  white-space: nowrap;
-}
-
 .dnerf {
   font-variant: small-caps;
 }
