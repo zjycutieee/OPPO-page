@@ -2,189 +2,243 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="description" content="OPPO: Omni-Perception Policy Optimization for Multimodal Emotion Reasoning.">
+  <meta name="keywords" content="Multimodal Emotion Reasoning, Omni-MLLM, Reinforcement Learning, OPPO, MEP-Bench">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OPPO: Omni-Perception Policy Optimization</title>
   <link rel="icon" type="image/png" href="fig1-1.png">
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="style.css?v=6">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="style.css?v=7">
 </head>
 <body>
-  <section class="hero publication-header">
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">
+            Omni-Perception Policy Optimization for <br> Multimodal Emotion Reasoning
+          </h1>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Zhiyuan Han<sup>1,2,4</sup>,</span>
+            <span class="author-block">Beier Zhu<sup>1</sup>,</span>
+            <span class="author-block">Wenwen Tong<sup>2</sup>,</span>
+            <span class="author-block">Pengyang Shao<sup>3</sup>,</span>
+            <span class="author-block">Peipei Song<sup>1</sup>,</span>
+            <span class="author-block">Xinyi Wang<sup>1</sup></span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Jiangnan Chen<sup>2</sup>,</span>
+            <span class="author-block">Lewei Lu<sup>2</sup>,</span>
+            <span class="author-block">Xun Yang<sup>1</sup></span>
+          </div>
+
+          <div class="is-size-5 publication-authors publication-affiliations">
+            <span class="author-block"><sup>1</sup>University of Science and Technology of China,</span>
+            <span class="author-block"><sup>2</sup>SenseTime Research</span>
+          </div>
+
+          <div class="is-size-5 publication-authors publication-affiliations">
+            <span class="author-block"><sup>3</sup>National University of Singapore,</span>
+            <span class="author-block"><sup>4</sup>Institute of Artificial Intelligence, Hefei Comprehensive National Science Center</span>
+          </div>
+
+          <div class="publication-venue">International Conference on Machine Learning (ICML) 2026</div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2606.25325"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2606.25325"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>PDF</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a class="external-link button is-normal is-rounded is-light is-disabled"
+                   aria-disabled="true">
+                  <span>Code Coming Soon</span>
+                </a>
+              </span>
+            </div>
+          </div>
+
+          <div class="content publication-news">
+            <span class="news-label">News:</span>
+            <span>OPPO is available as an arXiv preprint. The project page highlights perception utilization, faithfulness, and MEP-Bench.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
     <div class="hero-body">
-      <div class="container is-max-desktop has-text-centered">
-        <h1 class="title publication-title">Omni-Perception Policy Optimization for Multimodal Emotion Reasoning</h1>
+      <img src="fig1-1.png" alt="OPPO teaser showing utilization and faithfulness issues">
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">OPPO</span> improves multimodal emotion reasoning by encouraging models to use enough evidence and stay faithful to the modality that supports each claim.
+      </h2>
+    </div>
+  </div>
+</section>
 
-        <div class="publication-authors">
-          <span class="author-block">Zhiyuan Han<sup>1,2,4</sup>,</span>
-          <span class="author-block">Beier Zhu<sup>1</sup>,</span>
-          <span class="author-block">Wenwen Tong<sup>2</sup>,</span>
-          <span class="author-block">Pengyang Shao<sup>3</sup>,</span>
-          <span class="author-block">Peipei Song<sup>1</sup>,</span>
-          <span class="author-block">Xinyi Wang<sup>1</sup>,</span>
-          <span class="author-block">Jiangnan Chen<sup>2</sup>,</span>
-          <span class="author-block">Lewei Lu<sup>2</sup>,</span>
-          <span class="author-block">Xun Yang<sup>1</sup></span>
-        </div>
-
-        <div class="publication-affiliations">
-          <span><sup>1</sup>University of Science and Technology of China</span>
-          <span><sup>2</sup>SenseTime Research</span>
-          <span><sup>3</sup>National University of Singapore</span>
-          <span><sup>4</sup>Institute of Artificial Intelligence, Hefei Comprehensive National Science Center</span>
-        </div>
-
-        <div class="publication-venue">International Conference on Machine Learning (ICML) 2026</div>
-
-        <div class="publication-links">
-          <a href="https://arxiv.org/abs/2606.25325" class="button is-dark is-rounded">
-            <span class="button-icon"><i class="ai ai-arxiv" aria-hidden="true"></i></span>
-            <span>Paper</span>
-          </a>
-          <a href="https://arxiv.org/pdf/2606.25325" class="button is-dark is-rounded">
-            <span class="button-icon"><i class="ai ai-arxiv" aria-hidden="true"></i></span>
-            <span>PDF</span>
-          </a>
-          <a href="#" class="button is-dark is-rounded">Code Coming Soon</a>
+<section class="section" id="abstract-method">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Multimodal emotion reasoning asks a model to infer emotions while grounding its explanation in visual,
+            acoustic, and linguistic evidence. Existing emotion-oriented Omni-MLLMs can give plausible reasoning, but
+            they often miss fine-grained cues or borrow evidence from the wrong modality. OPPO addresses these failures
+            by optimizing perception itself rather than relying only on final-answer supervision.
+          </p>
+          <p>
+            OPPO combines an Omni-Perception Reward, which encourages generated reasoning to cover annotated multimodal
+            evidence, with an Omni-Perception Loss, which checks whether visual and acoustic claims remain grounded
+            under unimodal masking. We also introduce MEP-Bench to separately diagnose evidence utilization and
+            modality faithfulness, and show that stronger perception leads to better performance on MER-UniBench.
+          </p>
         </div>
       </div>
     </div>
-  </section>
 
-  <section class="hero teaser">
-    <div class="container is-max-desktop">
-      <div class="hero-body">
-        <img src="fig1-1.png" alt="OPPO teaser showing utilization and faithfulness issues">
-        <p class="content figure-caption">
-          <b>Reliable multimodal emotion reasoning requires both sufficient perception and faithful grounding.</b>
-          Existing emotion Omni-MLLMs may ignore fine-grained visual cues or infer missing visual evidence from audio.
-          OPPO targets these two failure modes through perception-aware reinforcement learning and evaluates them with MEP-Bench.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section hero is-light" id="abstract">
-    <div class="container is-max-desktop">
-      <div class="content has-text-justified">
-        <h2 class="title is-3 has-text-centered">Abstract</h2>
-        <p>
-          Multimodal emotion reasoning requires models to predict emotions and justify them with visual, acoustic, and
-          linguistic evidence. We find that current emotion-oriented Omni-MLLMs often produce plausible but unreliable
-          reasoning: they may overlook important multimodal cues or hallucinate modality-specific evidence from another
-          modality. OPPO addresses this problem by optimizing perception directly. It combines an Omni-Perception Reward
-          that encourages generated reasoning to recover fine-grained evidence cues with an Omni-Perception Loss that
-          tests whether visual and acoustic statements remain grounded under unimodal masking. We further introduce
-          MEP-Bench to diagnose utilization and faithfulness, and show that better perception leads to stronger
-          performance on MER-UniBench.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="hero is-small" id="method-overview">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
         <h2 class="title is-3">Method Overview</h2>
-        <img src="fig2-1.png" alt="Overview of the OPPO framework" class="main-figure">
-        <p class="content has-text-justified figure-caption">
-          <b>Overview of OPPO.</b> As shown in the upper branch, OPPO first builds a cue set from the annotated
-          video, audio, and emotion evidence, then splits the model's generated thinking process into clauses and aligns
-          them with these cues through an evidence-routing matrix. This alignment supports the Omni-Perception Reward,
-          which scores not only final accuracy and response format, but also whether the reasoning recovers sufficient
-          multimodal evidence. The lower branch illustrates the Omni-Perception Loss: OPPO masks video or audio inputs,
-          compares token-level distributions for modality-specific evidence, and penalizes visual or acoustic claims that
-          cannot be grounded in the corresponding modality. In this way, the reward improves evidence utilization while
-          the loss improves perception faithfulness.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="hero is-small" id="benchmark">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
-        <h2 class="title is-3">Benchmark</h2>
-        <img src="table1_mep_bench.png" alt="Diagnostic results on MEP-Bench" class="benchmark-figure">
-        <div class="benchmark-pills" aria-label="MEP-Bench summary">
-          <span>300 cue-rich samples</span>
-          <span>500 probes per modality</span>
-          <span>Recall, Acc@V, Acc@A</span>
+        <div class="content has-text-justified">
+          <p>
+            OPPO consists of two tightly coupled objectives. The upper branch in the figure constructs a cue set from
+            annotated video, audio, and emotion evidence, aligns generated reasoning clauses with those cues through an
+            evidence-routing matrix, and turns the alignment into the Omni-Perception Reward. The lower branch masks
+            one modality at a time and applies the Omni-Perception Loss to modality-specific evidence tokens, reducing
+            visual or acoustic hallucination while preserving the full reasoning trajectory.
+          </p>
+          <img src="fig2-1.png" alt="Method overview of the OPPO framework" class="section-image method-image">
         </div>
-        <p class="content has-text-justified figure-caption">
-          <b>MEP-Bench diagnostic benchmark.</b> Derived from OV-MERD, MEP-Bench evaluates whether reasoning uses
-          human-annotated multimodal cues and whether visual or acoustic claims remain faithful under unimodal masking.
-          It separates underutilization from cross-modal hallucination through evidence recall and masked perception accuracy.
-        </p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="hero is-small" id="results">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
-        <h2 class="title is-3">Main Results</h2>
-        <img src="table2_mer_unibench.png" alt="Main results on MER-UniBench" class="main-figure">
-        <p class="content has-text-justified figure-caption">
-          <b>Main results on MER-UniBench.</b> OPPO achieves the best mean score among compared Omni-MLLM baselines,
-          with consistent improvements across sentiment analysis, basic emotion recognition, and fine-grained emotion
-          recognition. These results suggest that optimizing perception quality can translate into stronger final emotion
-          predictions.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="hero is-small" id="qualitative-comparison">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
+<section class="section" id="qualitative-comparison">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
         <h2 class="title is-3">Qualitative Comparison</h2>
-        <div class="qualitative-grid">
-          <figure class="qualitative-figure">
-            <img src="table10_utilization1.png" alt="Qualitative utilization comparison between AffectGPT-R1 and OPPO">
-          </figure>
-          <figure class="qualitative-figure">
-            <img src="table14_video_faith1.png" alt="Qualitative video faithfulness comparison between AffectGPT-R1 and OPPO">
-          </figure>
+
+        <div class="content has-text-justified result-block">
+          <h3 class="title is-4 has-text-centered">Evidence Utilization</h3>
+          <img src="table10_utilization1.png" alt="Qualitative utilization comparison between AffectGPT-R1 and OPPO" class="section-image">
         </div>
+
+        <div class="content has-text-justified result-block">
+          <h3 class="title is-4 has-text-centered">Visual Faithfulness</h3>
+          <img src="table14_video_faith1.png" alt="Qualitative video faithfulness comparison between AffectGPT-R1 and OPPO" class="section-image">
+        </div>
+
         <p class="content has-text-justified figure-caption">
           <b>Qualitative comparison.</b> OPPO retrieves richer multimodal evidence during reasoning and avoids
-          hallucinating modality-specific cues under masking. Compared with the baseline, the generated explanations
-          are more tightly grounded in visible facial behavior, acoustic cues, and emotion-relevant evidence.
+          hallucinating modality-specific cues under masking. Compared with the baseline, the explanations are more
+          tightly grounded in visible facial behavior, acoustic cues, and emotion-relevant evidence.
         </p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <h2 class="title">BibTeX</h2>
-      <pre><code>@article{han2026oppo,
+<section class="section" id="quantitative-results">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Quantitative Results</h2>
+
+        <div class="content has-text-justified result-block">
+          <h3 class="title is-4 has-text-centered">MEP-Bench Diagnostic Benchmark</h3>
+          <img src="table1_mep_bench.png" alt="Diagnostic results on MEP-Bench" class="section-image benchmark-image">
+          <div class="benchmark-pills" aria-label="MEP-Bench summary">
+            <span>300 cue-rich samples</span>
+            <span>500 probes per modality</span>
+            <span>Recall, Acc@V, Acc@A</span>
+          </div>
+          <p>
+            MEP-Bench is derived from OV-MERD and evaluates whether reasoning uses human-annotated multimodal cues and
+            whether visual or acoustic claims remain faithful under unimodal masking. It separates underutilization
+            from cross-modal hallucination through evidence recall and masked perception accuracy.
+          </p>
+        </div>
+
+        <div class="content has-text-justified result-block">
+          <h3 class="title is-4 has-text-centered">Main Results on MER-UniBench</h3>
+          <img src="table2_mer_unibench.png" alt="Main results on MER-UniBench" class="section-image">
+          <p>
+            OPPO achieves the best mean score among compared Omni-MLLM baselines, with consistent improvements across
+            sentiment analysis, basic emotion recognition, and fine-grained emotion recognition.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{han2026oppo,
   title={Omni-Perception Policy Optimization for Multimodal Emotion Reasoning},
   author={Han, Zhiyuan and Zhu, Beier and Tong, Wenwen and Shao, Pengyang and Song, Peipei and Wang, Xinyi and Chen, Jiangnan and Lu, Lewei and Yang, Xun},
   journal={arXiv preprint arXiv:2606.25325},
   year={2026}
 }</code></pre>
-    </div>
-  </section>
+  </div>
+</section>
 
-  <section class="section acknowledgements">
-    <div class="container is-max-desktop content">
-      <h2 class="title">Acknowledgements</h2>
-      <p>
-        We thank the following projects and benchmarks for their excellent contributions:
-        <a href="https://arxiv.org/abs/2508.01181">MoSEAR</a>,
-        <a href="https://arxiv.org/abs/2406.11161">Emotion-LLaMA</a>,
-        <a href="https://arxiv.org/abs/2505.14566">AffectGPT-R1</a>,
-        and <a href="https://arxiv.org/abs/2507.11430">HumanOmni-V2</a>.
-      </p>
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="https://arxiv.org/pdf/2606.25325">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://arxiv.org/abs/2606.25325">
+        <i class="ai ai-arxiv"></i>
+      </a>
     </div>
-  </section>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website adapts the academic project-page style of
+            <a href="https://epd-solver.github.io/">EPD-Solver</a> and
+            <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+          </p>
+          <p>
+            Template style reference is licensed under the
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
 
-  <footer class="footer">
-    <div class="container is-max-desktop">
-      <p>This page follows the style of academic project pages and is adapted for OPPO.</p>
-    </div>
-  </footer>
 </body>
 </html>
