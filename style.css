@@ -270,8 +270,60 @@ a:hover {
   color: #2f2f2f;
 }
 
-.benchmark-image {
-  width: min(100%, 760px);
+.benchmark-table-wrap {
+  width: 100%;
+  margin: 1.35rem auto 1.1rem;
+  overflow-x: auto;
+}
+
+.benchmark-table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+  border-top: 2.5px solid #222;
+  border-bottom: 2.5px solid #222;
+  color: #111;
+  font-family: 'Google Sans', 'Noto Sans', Arial, sans-serif;
+  font-size: 1.04rem;
+  line-height: 1.25;
+  table-layout: fixed;
+}
+
+.benchmark-table th,
+.benchmark-table td {
+  padding: 0.72rem 1.1rem;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.benchmark-table th:first-child,
+.benchmark-table td:first-child {
+  width: 34%;
+  text-align: left;
+}
+
+.benchmark-table thead {
+  border-bottom: 1.8px solid #333;
+}
+
+.benchmark-table thead th {
+  font-weight: 700;
+}
+
+.benchmark-table .table-group td {
+  padding: 0.82rem 1rem;
+  border-top: 1.5px solid #555;
+  border-bottom: 1.5px solid #555;
+  font-family: Castoro, Georgia, serif;
+  font-size: 1.16rem;
+  font-style: italic;
+  font-weight: 700;
+  text-align: center;
+}
+
+.benchmark-table .oppo-row {
+  background: #e7fbfb;
+  font-weight: 700;
 }
 
 .benchmark-pills {
