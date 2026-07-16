@@ -142,16 +142,24 @@
         <h2 class="title is-3">Method Overview</h2>
         <div class="content has-text-justified">
           <p>
-            <strong>Omni-Perception Reward.</strong> The upper branch constructs a cue set from annotated video, audio,
-            and emotion evidence. OPPO then splits the generated thinking process into clauses and aligns them with
-            these cues through an evidence-routing matrix. This alignment allows the reward to score whether the model
-            recovers sufficient multimodal evidence, instead of only checking final answer correctness or output format.
+            OPPO optimizes multimodal emotion reasoning from two complementary perspectives: whether the model uses
+            enough perceptual evidence, and whether each modality-specific claim is faithful to the modality that
+            actually supports it. As shown in the overview figure, the upper branch builds an evidence-aware reward,
+            while the lower branch introduces a modality-masking loss to suppress hallucinated visual or acoustic cues.
           </p>
           <p>
-            <strong>Omni-Perception Loss.</strong> The lower branch masks one modality at a time and compares the
-            token-level distributions of modality-specific evidence. If a visual or acoustic claim remains confident
-            when the supporting modality is removed, OPPO penalizes it through targeted KL supervision. This reduces
-            cross-modal hallucination while preserving the broader reasoning trajectory.
+            <strong>Omni-Perception Reward.</strong> Given human-annotated video, audio, and emotion cues, OPPO first
+            constructs a multimodal evidence set. The generated reasoning is then split into clauses and aligned with
+            these cues through an evidence-routing matrix. This reward encourages the model to recover sufficient
+            emotion-relevant evidence during reasoning, instead of only optimizing for the final emotion label or
+            response format.
+          </p>
+          <p>
+            <strong>Omni-Perception Loss.</strong> To make the reasoning faithful to its perceptual source, OPPO masks
+            one modality at a time and compares the token-level distributions of modality-specific evidence before and
+            after masking. If a visual or acoustic claim remains confident even when its supporting modality is removed,
+            the loss penalizes it. This discourages cross-modal hallucination and keeps the explanation grounded in
+            visible facial behavior, acoustic cues, and valid emotion evidence.
           </p>
           <img src="fig2-1.png?v=13" alt="Method overview of the OPPO framework" class="section-image method-image">
         </div>
