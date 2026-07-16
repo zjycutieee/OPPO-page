@@ -225,6 +225,12 @@ a:hover {
   margin: 0 auto;
 }
 
+.benchmark-image {
+  width: min(100%, 760px);
+  margin-top: 0.85rem;
+  margin-bottom: 1.05rem;
+}
+
 .content {
   font-size: 1.02rem;
   line-height: 1.7;
