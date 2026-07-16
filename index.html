@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <link rel="stylesheet" href="style.css?v=17">
+  <link rel="stylesheet" href="style.css?v=18">
 </head>
 <body>
 
@@ -142,13 +142,13 @@
         <h2 class="title is-3">Method Overview</h2>
         <div class="content has-text-justified">
           <p>
-            <strong>Omni-Perception Reward:</strong> The upper branch constructs a cue set from annotated video, audio,
+            <strong>Omni-Perception Reward.</strong> The upper branch constructs a cue set from annotated video, audio,
             and emotion evidence. OPPO then splits the generated thinking process into clauses and aligns them with
             these cues through an evidence-routing matrix. This alignment allows the reward to score whether the model
             recovers sufficient multimodal evidence, instead of only checking final answer correctness or output format.
           </p>
           <p>
-            <strong>Omni-Perception Loss:</strong> The lower branch masks one modality at a time and compares the
+            <strong>Omni-Perception Loss.</strong> The lower branch masks one modality at a time and compares the
             token-level distributions of modality-specific evidence. If a visual or acoustic claim remains confident
             when the supporting modality is removed, OPPO penalizes it through targeted KL supervision. This reduces
             cross-modal hallucination while preserving the broader reasoning trajectory.
@@ -177,7 +177,7 @@
         </div>
 
         <p class="content has-text-justified figure-caption">
-          <b>Qualitative comparison:</b> OPPO retrieves richer multimodal evidence during reasoning and avoids
+          <b>Qualitative comparison.</b> OPPO retrieves richer multimodal evidence during reasoning and avoids
           hallucinating modality-specific cues under masking. Compared with the baseline, the explanations are more
           tightly grounded in visible facial behavior, acoustic cues, and emotion-relevant evidence.
         </p>
@@ -194,7 +194,7 @@
 
         <div class="content has-text-justified result-block">
           <h3 class="title is-4 has-text-centered">MEP-Bench Diagnostic Benchmark</h3>
-          <img src="table1_mep_bench.png?v=17" alt="Diagnostic results on MEP-Bench" class="section-image benchmark-image">
+          <img src="table1_mep_bench.png?v=18" alt="Diagnostic results on MEP-Bench" class="section-image benchmark-image">
           <p>
             MEP-Bench is derived from OV-MERD and evaluates whether reasoning uses human-annotated multimodal cues and
             whether visual or acoustic claims remain faithful under unimodal masking. It separates underutilization
