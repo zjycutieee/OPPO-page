@@ -226,7 +226,10 @@ a:hover {
 }
 
 .benchmark-image {
-  width: min(100%, 760px);
+  box-sizing: border-box;
+  width: 100%;
+  padding-right: clamp(0rem, 12vw, 10rem);
+  padding-left: clamp(0rem, 12vw, 10rem);
   margin-top: 0.85rem;
   margin-bottom: 1.05rem;
 }
@@ -438,5 +441,10 @@ code {
 
   .has-text-justified {
     text-align: left;
+  }
+
+  .benchmark-image {
+    padding-right: 0;
+    padding-left: 0;
   }
 }
