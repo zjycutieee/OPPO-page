@@ -234,15 +234,17 @@ a:hover {
   margin: 0 0 1rem;
 }
 
-.abstract-panel {
-  padding: 2.4rem 2.7rem 2.2rem;
-  border: 1px solid #ececec;
-  border-radius: 8px;
-  background: #f7f7f8;
-  box-shadow: 0 16px 38px rgba(32, 33, 36, 0.12);
+.abstract-section {
+  padding: 3.7rem 0 3.9rem;
+  background: #f5f5f5;
 }
 
-.abstract-panel .content p:last-child {
+.abstract-copy {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.abstract-copy p:last-child {
   margin-bottom: 0;
 }
 
@@ -372,8 +374,8 @@ code {
     min-width: 8rem;
   }
 
-  .abstract-panel {
-    padding: 1.55rem 1.25rem 1.4rem;
+  .abstract-section {
+    padding: 2.7rem 0 2.9rem;
   }
 
   .has-text-justified {
