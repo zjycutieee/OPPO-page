@@ -148,14 +148,14 @@
             while the lower branch introduces a modality-masking loss to suppress hallucinated visual or acoustic cues.
           </p>
           <p>
-            <strong>Omni-Perception Reward:</strong> Given human-annotated video, audio, and emotion cues, OPPO first
+            <strong>Omni-Perception Reward.</strong> Given human-annotated video, audio, and emotion cues, OPPO first
             constructs a multimodal evidence set. The generated reasoning is then split into clauses and aligned with
             these cues through an evidence-routing matrix. This reward encourages the model to recover sufficient
             emotion-relevant evidence during reasoning, instead of only optimizing for the final emotion label or
             response format.
           </p>
           <p>
-            <strong>Omni-Perception Loss:</strong> To make the reasoning faithful to its perceptual source, OPPO masks
+            <strong>Omni-Perception Loss.</strong> To make the reasoning faithful to its perceptual source, OPPO masks
             one modality at a time and compares the token-level distributions of modality-specific evidence before and
             after masking. If a visual or acoustic claim remains confident even when its supporting modality is removed,
             the loss penalizes it. This discourages cross-modal hallucination and keeps the explanation grounded in
@@ -185,7 +185,7 @@
         </div>
 
         <p class="content has-text-justified figure-caption">
-          <b>Qualitative comparison:</b> OPPO retrieves richer multimodal evidence during reasoning and avoids
+          <b>Qualitative comparison.</b> OPPO retrieves richer multimodal evidence during reasoning and avoids
           hallucinating modality-specific cues under masking. Compared with the baseline, the explanations are more
           tightly grounded in visible facial behavior, acoustic cues, and emotion-relevant evidence.
         </p>
@@ -221,7 +221,7 @@
 
         <div class="content has-text-justified result-block">
           <h3 class="title is-4 has-text-centered">Main Results on MME-Emotion</h3>
-          <img src="table3_mme_emotion.png?v=1" alt="Main results on MME-Emotion" class="section-image">
+          <img src="table3_mme_emotion.png?v=2" alt="Main results on MME-Emotion" class="section-image">
           <p>
             OPPO achieves the best overall performance on MME-Emotion, improving task-level emotion reasoning and the
             mean recognition, reasoning, and CoT scores.
